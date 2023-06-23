@@ -13,7 +13,7 @@ x-default-logging: &default-logging
 
 services:
   source-db:
-    image: postgres:14
+    image: postgres:13
     container_name: source-db
     <<: *app
     logging: *default-logging
@@ -25,6 +25,11 @@ services:
     volumes:
       - source_db_data:/var/lib/postgresql/data/
       - ./init_scripts/init_source_db.sql:/docker-entrypoint-initdb.d/init.sql
+#      - ./init_scripts/db_dumps/film_work_dump.sql:/docker-entrypoint-initdb.d/film_work_dump.sql
+#      - ./init_scripts/db_dumps/genre_dump.sql:/docker-entrypoint-initdb.d/genre_dump.sql
+#      - ./init_scripts/db_dumps/genre_film_work_dump.sql:/docker-entrypoint-initdb.d/genre_film_work_dump.sql
+#      - ./init_scripts/db_dumps/person_dump.sql:/docker-entrypoint-initdb.d/person_dump.sql
+#      - ./init_scripts/db_dumps/person_film_work_dump.sql:/docker-entrypoint-initdb.d/person_film_work_dump.sql
   target-db:
     image: elasticsearch:8.6.2
     container_name: target-db
@@ -35,8 +40,6 @@ services:
     environment:
       - discovery.type="single-node"
       - xpack.security.enabled=false
-      - http.cors.enabled=true  # todo удалить
-      - http.cors.allow-origin=https://app.elasticvue.com  # todo удалить
     volumes:
       - target_db_data:/usr/share/elasticsearch/data
 #  etl:

@@ -10,7 +10,7 @@ class JsonFileStorage(BaseStorage):
     Storage format: JSON
     """
 
-    def __init__(self, file_path: str = 'temp/storage.json') -> None:
+    def __init__(self, file_path: str = 'storage.json') -> None:
         self.file_path = file_path
 
     def save_state(self, state: dict[str, Any]) -> None:

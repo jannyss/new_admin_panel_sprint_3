@@ -43,4 +43,5 @@ if __name__ == '__main__':
 
             fetcher_coro.send(state.get_state(STATE_KEY) or str(date(1970, 1, 1)))
 
-            sleep(15)
+            logger.info('ETL process wsa ended. Sleeping for 20 secs ...')
+            sleep(20)

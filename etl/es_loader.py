@@ -35,5 +35,6 @@ class ElasticSearchLoader:
     def save_movies(self, state: State) -> Generator[list[Movie], None, None]:
         while movies := (yield):
             logger.info(f'Received for saving {len(movies)} movies')
-            print([movie.json() for movie in movies])
+            for movie in movies:
+                self.worker.es.index(index=self.worker.index_name, id=str(movie.id), document=movie.to_es_doc())
             state.set_state(STATE_KEY, str(movies[-1].updated_at))
