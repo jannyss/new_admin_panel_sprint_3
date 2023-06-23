@@ -1,0 +1,9 @@
+venv/
+temp/
+*.env
+.env
+.idea/
+__pycache__/
+logs/
+storage.json
+postman_tests.json
