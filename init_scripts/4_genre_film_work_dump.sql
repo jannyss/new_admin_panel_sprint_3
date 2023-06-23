@@ -5,8 +5,6 @@
 -- Dumped from database version 13.11 (Debian 13.11-1.pgdg120+1)
 -- Dumped by pg_dump version 13.8
 
-SELECT pg_sleep(60);
-
 COPY content.genre_film_work (id, genre_id, film_work_id, created_at) FROM stdin;
 d1684d62-58c1-4784-914b-9028dcc67955	237fd1e4-c98e-454e-aa13-8a13fb7547b5	045f2518-5c38-48df-9c48-639520ab57af	2021-06-16 23:14:09.579988+03
 1c0efc19-1545-4184-ac38-2d4a71be46fa	3d8d9bf5-0d90-4353-88ba-4ccc5d2c07ff	0fcfe6c1-8b9e-444c-b458-2787af80533c	2021-06-16 23:14:09.580056+03

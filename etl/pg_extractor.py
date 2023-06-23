@@ -1,6 +1,7 @@
 from datetime import datetime
 from typing import Generator
 
+import backoff
 import psycopg
 
 from utils.decorators import coroutine
@@ -8,15 +9,18 @@ from utils.logger import logger
 
 
 class PostgresExtractor:
+    """Class for extracting data from Postgres."""
     BATCH_SIZE = 100
 
     def __init__(self, cursor: psycopg.cursor.Cursor):
         self.cursor = cursor
 
     @coroutine
+    @backoff.on_exception(backoff.expo, Exception)
     def fetch_changed_movies(self, next_node: Generator) -> Generator[datetime, None, None]:
+        """Fetchs changed movies."""
         while last_updated := (yield):
-            logger.info(f'Fetching movies changed after ' f'{last_updated}')
+            logger.info(f'Fetching movies changed after {last_updated}')
             sql = '''
             SELECT 
             "content"."film_work"."id", 

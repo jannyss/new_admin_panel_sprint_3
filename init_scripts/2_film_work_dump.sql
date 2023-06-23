@@ -5,8 +5,6 @@
 -- Dumped from database version 13.11 (Debian 13.11-1.pgdg120+1)
 -- Dumped by pg_dump version 13.8
 
-SELECT pg_sleep(60);
-
 COPY content.film_work (id, title, description, creation_date, rating, type, file_path, created_at, updated_at) FROM stdin;
 3d825f60-9fff-4dfe-b294-1a45fa1e115d	Star Wars: Episode IV - A New Hope	The Imperial Forces, under orders from cruel Darth Vader, hold Princess Leia hostage in their efforts to quell the rebellion against the Galactic Empire. Luke Skywalker and Han Solo, captain of the Millennium Falcon, work together with the companionable droid duo R2-D2 and C-3PO to rescue the beautiful princess, help the Rebel Alliance and restore freedom and justice to the Galaxy.	\N	8.6	movie	\N	2021-06-16 23:14:09.221838+03	2021-06-16 23:14:09.221855+03
 0312ed51-8833-413f-bff5-0e139c11264a	Star Wars: Episode V - The Empire Strikes Back	Luke Skywalker, Han Solo, Princess Leia and Chewbacca face attack by the Imperial forces and its AT-AT walkers on the ice planet Hoth. While Han and Leia escape in the Millennium Falcon, Luke travels to Dagobah in search of Yoda. Only with the Jedi master's help will Luke survive when the dark side of the Force beckons him into the ultimate duel with Darth Vader.	\N	8.7	movie	\N	2021-06-16 23:14:09.221939+03	2021-06-16 23:14:09.221958+03

@@ -5,17 +5,8 @@ from typing import Any, Optional
 from pydantic import BaseModel
 
 
-class Actor(BaseModel):
-    id: uuid.UUID
-    name: str
-
-
-class Writer(BaseModel):
-    id: uuid.UUID
-    name: str
-
-
 class Movie(BaseModel):
+    """Dataclass for movie."""
     id: uuid.UUID
     title: str
     genre: list[str]
@@ -29,7 +20,8 @@ class Movie(BaseModel):
     writers_ids: Optional[list[uuid.UUID]]
 
     def to_es_doc(self) -> dict[str, Any]:
-        d = {
+        """Converts for ElasticSearch doc format."""
+        doc = {
             'id': self.id,
             'imdb_rating': self.imdb_rating,
             'genre': self.genre,
@@ -40,21 +32,21 @@ class Movie(BaseModel):
             'writers_names': self.writers_names if self.writers_names else [],
         }
         if self.actors_ids and self.actors_names:
-            d.update({'actors': [
+            doc.update({'actors': [
                 {
                     'id': actor_id,
                     'name': actor_name,
                 } for actor_id, actor_name in zip(self.actors_ids, self.actors_names)
             ]})
         else:
-            d.update({'actors': []})
+            doc.update({'actors': []})
         if self.writers_ids and self.writers_names:
-            d.update({'writers':  [
+            doc.update({'writers':  [
                 {
                     'id': writer_id,
                     'name': writer_name,
                 } for writer_id, writer_name in zip(self.writers_ids, self.writers_names)
             ]})
         else:
-            d.update({'writers': []})
-        return d
+            doc.update({'writers': []})
+        return doc

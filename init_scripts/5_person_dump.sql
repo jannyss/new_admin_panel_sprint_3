@@ -5,8 +5,6 @@
 -- Dumped from database version 13.11 (Debian 13.11-1.pgdg120+1)
 -- Dumped by pg_dump version 13.8
 
-SELECT pg_sleep(60);
-
 COPY content.person (id, full_name, created_at, updated_at) FROM stdin;
 a5a8f573-3cee-4ccc-8a2b-91cb9f55250a	George Lucas	2021-06-16 23:14:09.313068+03	2021-06-16 23:14:09.313086+03
 26e83050-29ef-4163-a99d-b546cac208f8	Mark Hamill	2021-06-16 23:14:09.313133+03	2021-06-16 23:14:09.313152+03

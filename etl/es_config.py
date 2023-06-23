@@ -1,3 +1,4 @@
+"""ElasticSearch mappings and settings."""
 MAPPINGS = {
     "dynamic": "strict",
     "properties": {

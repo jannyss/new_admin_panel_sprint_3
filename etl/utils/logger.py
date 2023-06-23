@@ -1,3 +1,4 @@
+"""Logger initialization."""
 import logging
 import os
 from logging.handlers import RotatingFileHandler

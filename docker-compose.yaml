@@ -24,12 +24,12 @@ services:
       PGTZ: "Europe/Moscow"
     volumes:
       - source_db_data:/var/lib/postgresql/data/
-      - ./init_scripts/init_source_db.sql:/docker-entrypoint-initdb.d/init.sql
-#      - ./init_scripts/db_dumps/film_work_dump.sql:/docker-entrypoint-initdb.d/film_work_dump.sql
-#      - ./init_scripts/db_dumps/genre_dump.sql:/docker-entrypoint-initdb.d/genre_dump.sql
-#      - ./init_scripts/db_dumps/genre_film_work_dump.sql:/docker-entrypoint-initdb.d/genre_film_work_dump.sql
-#      - ./init_scripts/db_dumps/person_dump.sql:/docker-entrypoint-initdb.d/person_dump.sql
-#      - ./init_scripts/db_dumps/person_film_work_dump.sql:/docker-entrypoint-initdb.d/person_film_work_dump.sql
+      - ./init_scripts/1_init_source_db.sql:/docker-entrypoint-initdb.d/1_init_source_db.sql
+      - ./init_scripts/2_film_work_dump.sql:/docker-entrypoint-initdb.d/2_film_work_dump.sql
+      - ./init_scripts/3_genre_dump.sql:/docker-entrypoint-initdb.d/3_genre_dump.sql
+      - ./init_scripts/4_genre_film_work_dump.sql:/docker-entrypoint-initdb.d/4_genre_film_work_dump.sql
+      - ./init_scripts/5_person_dump.sql:/docker-entrypoint-initdb.d/5_person_dump.sql
+      - ./init_scripts/6_person_film_work_dump.sql:/docker-entrypoint-initdb.d/6_person_film_work_dump.sql
   target-db:
     image: elasticsearch:8.6.2
     container_name: target-db
@@ -42,12 +42,14 @@ services:
       - xpack.security.enabled=false
     volumes:
       - target_db_data:/usr/share/elasticsearch/data
-#  etl:
-#    container_name: etl
-#    <<: *app
-#    logging: *default-logging
-#    build: etl
-
+  etl:
+    container_name: etl
+    <<: *app
+    logging: *default-logging
+    build: etl
+    depends_on:
+      - source-db
+      - target-db
 
 volumes:
   source_db_data:

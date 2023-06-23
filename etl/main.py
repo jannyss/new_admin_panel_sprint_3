@@ -8,7 +8,7 @@ from psycopg.rows import dict_row
 
 from es_loader import ElasticSearchLoader
 from es_loader import ElasticSearchWorker
-from etl.utils.logger import logger
+from utils.logger import logger
 from pg_extractor import PostgresExtractor
 from settings import database_settings, es_settings
 from state.json_file_storage import JsonFileStorage
@@ -16,7 +16,9 @@ from state.state import State, STATE_KEY
 from transformer import Transformer
 
 if __name__ == '__main__':
+    print('Main!!!')
     state = State(JsonFileStorage())
+    print('State json')
     logger.info(f'Initial state is {state.state}')
 
     pg_dsn = make_conninfo(**database_settings.dict())
@@ -24,6 +26,7 @@ if __name__ == '__main__':
 
     es_worker = ElasticSearchWorker(**es_dsn)
     es_worker.create_index()
+    print('Index was created')
 
     with (
         psycopg.connect(pg_dsn, row_factory=dict_row) as conn, \

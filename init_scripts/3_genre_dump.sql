@@ -5,8 +5,6 @@
 -- Dumped from database version 13.11 (Debian 13.11-1.pgdg120+1)
 -- Dumped by pg_dump version 13.8
 
-SELECT pg_sleep(60);
-
 COPY content.genre (id, name, description, created_at, updated_at) FROM stdin;
 3d8d9bf5-0d90-4353-88ba-4ccc5d2c07ff	Action	\N	2021-06-16 23:14:09.309735+03	2021-06-16 23:14:09.309765+03
 120a21cf-9097-479e-904a-13dd7198c1dd	Adventure	\N	2021-06-16 23:14:09.309818+03	2021-06-16 23:14:09.309836+03

@@ -5,8 +5,6 @@
 -- Dumped from database version 13.11 (Debian 13.11-1.pgdg120+1)
 -- Dumped by pg_dump version 13.8
 
-SELECT pg_sleep(60);
-
 COPY content.person_film_work (id, person_id, film_work_id, role, created_at) FROM stdin;
 2dba43a5-7e55-4bc8-993f-51c4d208bc8c	232fd5ab-166f-47e4-afe1-28d3450721d5	d4b209dc-88fe-4380-a43e-8966673f2fe0	director	2021-06-16 23:14:09.702729+03
 6852da17-aa75-4df9-aa5e-545055eab043	038267d1-6ac4-4ca6-81dc-bab21466269b	3b74bedf-0cba-40c3-8270-0e5024f8b9a4	writer	2021-06-16 23:14:09.702795+03

@@ -1,7 +1,7 @@
 import json
 from typing import Any
 
-from etl.utils.logger import logger
+from utils.logger import logger
 from .base_storage import BaseStorage
 
 
@@ -12,6 +12,7 @@ class JsonFileStorage(BaseStorage):
 
     def __init__(self, file_path: str = 'storage.json') -> None:
         self.file_path = file_path
+        logger.info('Json file storage was initialized')
 
     def save_state(self, state: dict[str, Any]) -> None:
         """Saves state to a storage."""

@@ -2,6 +2,7 @@ from pydantic import BaseSettings, Field
 
 
 class PostgresSettings(BaseSettings):
+    """Settings for Postgres connection."""
     dbname: str = Field(..., env='POSTGRES_DB')
     user: str = ...
     password: str = ...
@@ -15,6 +16,7 @@ class PostgresSettings(BaseSettings):
 
 
 class ElasticSearchSettings(BaseSettings):
+    """Settings for ElasticSearch connection."""
     host: str = ...
     port: int = ...
 

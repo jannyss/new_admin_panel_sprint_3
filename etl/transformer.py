@@ -1,11 +1,14 @@
 from typing import Generator
 
-from etl.utils.decorators import coroutine
 from models.movie import Movie
+from utils.decorators import coroutine
 from utils.logger import logger
 
 
 class Transformer:
+    """
+    Class for transforming data from Postgres format to dataclass with ElasticSearch format support.
+    """
 
     @staticmethod
     @coroutine
