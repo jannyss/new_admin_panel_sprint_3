@@ -17,8 +17,6 @@ services:
     container_name: source-db
     <<: *app
     logging: *default-logging
-    ports:
-      - "5432:5432"
     environment:
       TZ: "Europe/Moscow"
       PGTZ: "Europe/Moscow"
@@ -35,8 +33,6 @@ services:
     container_name: target-db
     <<: *app
     logging: *default-logging
-    ports:
-      - "9200:9200"
     environment:
       - discovery.type="single-node"
       - xpack.security.enabled=false

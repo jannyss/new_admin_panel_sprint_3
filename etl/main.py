@@ -16,9 +16,7 @@ from state.state import State, STATE_KEY
 from transformer import Transformer
 
 if __name__ == '__main__':
-    print('Main!!!')
     state = State(JsonFileStorage())
-    print('State json')
     logger.info(f'Initial state is {state.state}')
 
     pg_dsn = make_conninfo(**database_settings.dict())
@@ -26,7 +24,6 @@ if __name__ == '__main__':
 
     es_worker = ElasticSearchWorker(**es_dsn)
     es_worker.create_index()
-    print('Index was created')
 
     with (
         psycopg.connect(pg_dsn, row_factory=dict_row) as conn, \
